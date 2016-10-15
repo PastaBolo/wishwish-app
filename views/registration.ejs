@@ -10,99 +10,68 @@
   </head>
   <body>
     <% include includes/navbar %>
-    <div ng-app="formApp" ng-controller="formCtrl">
-      <div class="container">
-        <h1>Réalisez ce qui vous tient à coeur !</h1>
-        <br/>
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Email :</label>
-            <div class="col-sm-3">
-              <input type="email" ng-model="formData.user.email" name="email" class="form-control" id="email" placeholder="Entrez votre adresse email">
-            </div>
+    <div class="container">
+      <h1>Réalisez ce qui vous tient à coeur !</h1>
+      <br/>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">Email :</label>
+          <div class="col-sm-3">
+            <input type="email" name="email" class="form-control" id="email" placeholder="Entrez votre adresse email">
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="firstname">Prénom :</label>
-            <div class="col-sm-3">
-              <input type="text" ng-model="formData.user.firstname" name="firstname" class="form-control" id="firstname" placeholder="Quel est votre prénom ?">
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="firstname">Prénom :</label>
+          <div class="col-sm-3">
+            <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Quel est votre prénom ?">
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="name">Nom :</label>
-            <div class="col-sm-3">
-              <input type="text" ng-model="formData.user.name" name="email" class="form-control" id="name" placeholder="Quel est votre nom ?">
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="name">Nom :</label>
+          <div class="col-sm-3">
+            <input type="text" name="email" class="form-control" id="name" placeholder="Quel est votre nom ?">
           </div>
-          <div class="form-group has-feedback">
-            <label class="control-label col-sm-2" for="password">Mot de passe :</label>
-            <div class="col-sm-3">
-              <i class="form-control-feedback glyphicon glyphicon-lock"></i>
-              <input type="text" ng-model="formData.user.password" name="password" class="form-control" id="password" placeholder="Choisissez votre mot de passe">
-            </div>
+        </div>
+        <div class="form-group has-feedback">
+          <label class="control-label col-sm-2" for="password">Mot de passe :</label>
+          <div class="col-sm-3">
+            <i class="form-control-feedback glyphicon glyphicon-lock"></i>
+            <input type="text" name="password" class="form-control" id="password" placeholder="Choisissez votre mot de passe">
           </div>
-          <div class="col-sm-12">
-            <div class="panel-group col-sm-5">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse1">Voulez-vous réaliser un premier souhait ?<i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapse1">
-                  <div class="panel-body">
-                    <div class="form-group">
-                      <label class="control-label col-sm-4" for="idea">Votre souhait :</label>
-                      <div class="col-sm-8">
-                        <input type="text" ng-model="formData.wish.title" name="title" class="form-control" id="title" placeholder="Votre souhait">
-                      </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="panel-group col-sm-5">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#collapse1">Voulez-vous réaliser un premier souhait ?<i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+                </h4>
+              </div>
+              <div class="panel-collapse collapse" id="collapse1">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label class="control-label col-sm-4" for="idea">Votre souhait :</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="idea" class="form-control" id="idea" placeholder="Votre souhait">
                     </div>
-                    <div class="form-group">
-                      <label class="control-label col-sm-4" for="description">Description :</label>
-                      <div class="col-sm-8">
-                        <textarea name="description" ng-model="formData.wish.description" class="form-control" rows="4" id="description" placeholder="Décrivez votre souhait..."></textarea>
-                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-4" for="description">Description :</label>
+                    <div class="col-sm-8">
+                      <textarea name="description" class="form-control" rows="4" id="description" placeholder="Décrivez votre idée..."></textarea>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-offset-2 col-sm-3">
-            <button type="button" ng-click="sendForm()" class="btn btn-sample">Création du compte</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="col-sm-offset-2 col-sm-3">
+          <button type="button" class="btn btn-sample">Création du compte</button>
+        </div>
+      </form>
     </div>
     <script src="/jquery/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/angular/angular.min.js"></script>
-    <script>
-      let app = angular.module('formApp', [])
-      app.controller('formCtrl', ($scope, $http, $window) => {
-        $scope.formData = {
-          user: {
-            email: '',
-            firstname: '',
-            name: '',
-            password: ''
-          },
-          wish: {
-            title:'',
-            description:''
-          }
-        }
-        $scope.sendForm = () => {
-          console.log($scope.formData)
-          $http.post('/form_registration', $scope.formData).then(
-            (data) => {
-              $window.location.href = '/'
-            },
-            (err) => {
-              $window.location.href = '/registration'
-            }
-          )
-        }
-      })
-    </script>
   </body>
 </html>
